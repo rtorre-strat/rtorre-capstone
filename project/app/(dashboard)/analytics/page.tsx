@@ -59,7 +59,7 @@ export default function AnalyticsPage() {
   const progressData = analytics.projectProgress.map((proj) => ({
     name: proj.name,
     completed: proj.completed,
-    remaining: proj.total - proj.completed,
+    remaining: proj.total - proj.completed  ,
   }));
 
   const activityData = [
@@ -138,7 +138,7 @@ export default function AnalyticsPage() {
             <h3 className="text-lg font-semibold text-outer_space-500 dark:text-platinum-500 mb-4">
               Project Progress
             </h3>
-            <ResponsiveContainer width="100%" height={250}>
+            {/* <ResponsiveContainer width="100%" height={250}>
               <BarChart data={progressData}>
                 <XAxis dataKey="name" />
                 <YAxis />
@@ -146,7 +146,7 @@ export default function AnalyticsPage() {
                 <Bar dataKey="completed" stackId="a" fill="#4CAF50" />
                 <Bar dataKey="remaining" stackId="a" fill="#E0E0E0" />
               </BarChart>
-            </ResponsiveContainer>
+            </ResponsiveContainer> */}
           </div>
 
           {/* Team Activity Pie Chart */}
