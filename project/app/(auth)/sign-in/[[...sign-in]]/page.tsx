@@ -22,6 +22,10 @@ export default function CustomSignIn() {
       setShowPassword((prev) => !prev);
   };
 
+  const togglePasswordtoPassword = () => {
+      setShowPassword(false);
+  };
+
   if (!isLoaded) return null;
 
   const handleSignIn = async (e: React.FormEvent) => {
@@ -102,6 +106,7 @@ export default function CustomSignIn() {
           {/* Submit */}
           <button
             type="submit"
+            onClick={togglePasswordtoPassword}
             className="w-full py-2 bg-blue_munsell-500 hover:bg-blue_munsell-600 text-white font-semibold rounded-md transition"
           >
             Sign In

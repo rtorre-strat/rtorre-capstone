@@ -22,6 +22,10 @@ export default function CustomSignUp() {
       setShowPassword((prev) => !prev);
   };
 
+  const togglePasswordtoPassword = () => {
+      setShowPassword(false);
+  };
+
   if (!isLoaded) return null;
 
   const handleSignUp = async (e: React.FormEvent) => {
@@ -163,6 +167,7 @@ export default function CustomSignUp() {
 
           <button
             type="submit"
+            onClick={togglePasswordtoPassword}
             className="w-full py-2 bg-blue_munsell-500 hover:bg-blue_munsell-600 text-white font-semibold rounded-md transition"
           >
             Sign Up

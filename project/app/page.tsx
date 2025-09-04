@@ -133,18 +133,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* Navigation Demo Section */}
-      {/* <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white/50 dark:bg-outer_space-400/50">
-        <div className="container mx-auto text-center">
-          <h2 className="text-3xl font-bold text-outer_space-500 dark:text-platinum-500 mb-8">
-            🚀 Navigate the Mock Site
-          </h2>
-          <p className="text-lg text-payne's_gray-500 dark:text-french_gray-500 mb-8">
-            All pages are accessible without authentication for development purposes
-          </p>
-        </div>
-      </section> */}
     </div>
   )
 }

@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useUser, useClerk } from "@clerk/nextjs";
 import { DashboardLayout } from "@/components/dashboard-layout";
 import { clerkClient } from "@clerk/nextjs";
+import { useTheme } from "@/components/theme-provider";
 
 export default function SettingsPage() {
   const { user, isLoaded } = useUser();
@@ -14,6 +15,7 @@ export default function SettingsPage() {
   const [fullName, setFullName] = useState(user?.fullName ?? "");
   const [saving, setSaving] = useState(false);
   const [notificationsEnabled, setNotificationsEnabled] = useState(true);
+  const { theme, setTheme } = useTheme()
 
   const [passwords, setPasswords] = useState<{
     old: string;
@@ -169,7 +171,7 @@ useEffect(() => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Sidebar */}
           <div className="bg-white dark:bg-outer_space-500 rounded-lg border border-french_gray-300 dark:border-payne's_gray-400 p-6">
-            <h3 className="text-lg font-semibold mb-4">Settings</h3>
+            <h3 className="text-lg font-semibold mb-4 text-outer_space-500 dark:text-platinum-500">Settings</h3>
             <nav className="space-y-2">
               {[
                 { id: "profile", name: "Profile", icon: User },
@@ -198,7 +200,7 @@ useEffect(() => {
           <div className="lg:col-span-2 space-y-10">
             {selectedSection === "profile" && (
               <div className="bg-white dark:bg-outer_space-500 rounded-lg border p-6">
-                <h3 className="text-lg font-semibold mb-6">Profile Settings</h3>
+                <h3 className="text-lg font-semibold mb-6 text-outer_space-500 dark:text-platinum-500 ">Profile Settings</h3>
                 <div className="space-y-6">
                   <div>
                     <label className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-200">Full Name</label>
@@ -247,7 +249,7 @@ useEffect(() => {
 
             {selectedSection === "security" && (
               <div className="bg-white dark:bg-outer_space-500 rounded-lg border p-6">
-                <h3 className="text-lg font-semibold mb-6">Security</h3>
+                <h3 className="text-lg font-semibold mb-6 text-outer_space-500 dark:text-platinum-500 ">Security</h3>
                   <form onSubmit={handleChangePassword} className="space-y-4">
                     <div>
                       <label className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-200">Current Password</label>
@@ -297,7 +299,7 @@ useEffect(() => {
 
             {selectedSection === "notification" && (
               <div className="bg-white dark:bg-outer_space-500 rounded-lg border p-6">
-                <h3 className="text-lg font-semibold mb-6">Notification Settings</h3>
+                <h3 className="text-lg font-semibold mb-6 text-outer_space-500 dark:text-platinum-500 ">Notification Settings</h3>
                 <div className="flex items-center space-x-3">
                   <input
                     type="checkbox"
@@ -328,8 +330,21 @@ useEffect(() => {
 
             {selectedSection === "appearance" && (
               <div className="bg-white dark:bg-outer_space-500 rounded-lg border p-6">
-                <h3 className="text-lg font-semibold mb-6">Appearance</h3>
-                <p className="text-sm text-gray-500">Theme toggle coming soon...</p>
+                <h3 className="text-lg font-semibold mb-6 text-outer_space-500 dark:text-platinum-500 ">Appearance</h3>
+                <div className="flex items-center space-x-3">
+                  <input
+                    type="checkbox"
+                    id="notifications"
+                    checked={theme == "light" ? false : true}
+                    onChange={async (e) => {
+                      setTheme(theme === "light" ? "dark" : "light")
+                    }}
+                    className="h-5 w-5 text-blue-600 rounded border-gray-300 focus:ring-blue-500"
+                  />
+                  <label htmlFor="notifications" className="text-gray-700 dark:text-gray-200">
+                    Dark Mode
+                  </label>
+                </div>
               </div>
             )}
           </div>
